@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-blue: #0091FF;
+  --color-brand-green: #7ED321;
+  --color-brand-blue-light: #E6F4FF;
+  --color-brand-green-light: #F2FBE6;
+  --color-brand-blue-dark: #0077D1;
+  --color-brand-green-dark: #69B01B;
+
+  --shadow-premium: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
+  --shadow-hd: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#F8FAFC] text-slate-800 antialiased selection:bg-brand-blue/10 selection:text-brand-blue relative;
+  }
+  
+  body::before {
+    content: "";
+    @apply absolute inset-0 opacity-[0.015] pointer-events-none -z-50;
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight font-bold;
+  }
+}
+
+.hd-border {
+  @apply border border-slate-200/40;
+}
+
+.hd-shadow {
+  box-shadow: var(--shadow-hd);
+}
+
+.glass {
+  @apply bg-white/80 backdrop-blur-md border border-slate-200/50;
+}
+
+.section-padding {
+  @apply py-20 px-6 md:px-12 lg:px-24;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.markdown-body p {
+  @apply mb-2 last:mb-0;
+}
+
+.markdown-body ul, .markdown-body ol {
+  @apply mb-2 ml-4 list-disc;
+}
+
+.markdown-body li {
+  @apply mb-1;
+}
+
+.markdown-body strong {
+  @apply font-bold;
+}

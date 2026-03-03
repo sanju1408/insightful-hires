@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insightful Hires | Elite Recruitment Agency</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- Hidden forms for Netlify detection -->
+    <form name="contact" data-netlify="true" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+    
+    <form name="submit-cv" data-netlify="true" hidden>
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
+      <select name="department"></select>
+    </form>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
