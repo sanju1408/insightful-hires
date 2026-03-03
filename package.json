@@ -1,5 +1,8 @@
 {
   "name": "insightful-hires",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^25.3.3"
+  }
 }
