@@ -3,6 +3,32 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "@types/node": "^25.3.3"
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development node --loader ts-node/esm server.ts",
+    "start": "NODE_ENV=production node dist/server.js",
+    "build": "vite build",
+    "dev:backend": "node dev-server.js",
+    "dev:frontend": "vite"
+  },
+  "dependencies": {
+    "@google/genai": "^1.43.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "@vitejs/plugin-react": "^5.1.4",
+    "better-sqlite3": "^12.6.2",
+    "express": "^5.2.1",
+    "lucide-react": "^0.576.0",
+    "motion": "^12.34.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-markdown": "^10.1.0",
+    "tailwindcss": "^4.2.1",
+    "vite": "^7.3.1"
   }
 }
