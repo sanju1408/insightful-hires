@@ -10,15 +10,16 @@ export const Contact = () => {
     setStatus('loading');
     const form = e.currentTarget;
     const formData = new FormData(form);
-    
-    // Netlify requires the form-name to be sent in the body
-    formData.append('form-name', 'contact');
 
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: String(formData.get('name') || ''),
+          email: String(formData.get('email') || ''),
+          message: String(formData.get('message') || ''),
+        }),
       });
       if (response.ok) setStatus('success');
       else setStatus('error');

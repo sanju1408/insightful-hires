@@ -4,21 +4,24 @@ import { Upload, FileText, CheckCircle, Sparkles, ArrowRight } from 'lucide-reac
 
 export const SubmitCV = () => {
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [selectedFileName, setSelectedFileName] = React.useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
     const form = e.currentTarget;
     const formData = new FormData(form);
-    
-    // Netlify requires the form-name to be sent in the body
-    formData.append('form-name', 'submit-cv');
 
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/api/submit-cv', {
         method: 'POST',
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: String(formData.get('firstName') || ''),
+          lastName: String(formData.get('lastName') || ''),
+          email: String(formData.get('email') || ''),
+          department: String(formData.get('department') || ''),
+        }),
       });
       if (response.ok) setStatus('success');
       else setStatus('error');
@@ -156,12 +159,25 @@ export const SubmitCV = () => {
                 
                 <div className="space-y-3">
                   <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Upload CV</label>
-                  <div className="border-2 border-dashed border-slate-100 rounded-3xl p-10 flex flex-col items-center justify-center gap-4 hover:border-brand-blue hover:bg-slate-50 transition-all cursor-pointer group">
+                  <label
+                    htmlFor="cv-upload"
+                    className="border-2 border-dashed border-slate-100 rounded-3xl p-10 flex flex-col items-center justify-center gap-4 hover:border-brand-blue hover:bg-slate-50 transition-all cursor-pointer group"
+                  >
+                    <input
+                      id="cv-upload"
+                      name="cv"
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      className="sr-only"
+                      onChange={(e) => setSelectedFileName(e.target.files?.[0]?.name ?? '')}
+                    />
                     <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-400 group-hover:text-brand-blue group-hover:bg-white transition-all shadow-sm">
                       <Upload size={28} />
                     </div>
-                    <p className="text-sm text-slate-500 font-bold">Drop your CV here</p>
-                  </div>
+                    <p className="text-sm text-slate-500 font-bold">
+                      {selectedFileName || 'Click to choose your CV'}
+                    </p>
+                  </label>
                 </div>
                 
                 <motion.button 

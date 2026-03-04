@@ -12,15 +12,16 @@ export const Footer = () => {
             <p className="text-slate-800 leading-relaxed max-w-xs font-medium">
               A recruitment consultancy focused on elite talent and visionary companies.
             </p>
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-700">Follow us</p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900/10 flex items-center justify-center text-slate-900 hover:bg-brand-blue hover:text-white transition-all">
-                <Linkedin size={18} />
+              <a aria-label="Twitter" href="#" className="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-brand-blue transition-all shadow-sm">
+                <Twitter size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900/10 flex items-center justify-center text-slate-900 hover:bg-brand-blue hover:text-white transition-all">
-                <Linkedin size={18} />
+              <a aria-label="Instagram" href="#" className="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-brand-blue transition-all shadow-sm">
+                <Instagram size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900/10 flex items-center justify-center text-slate-900 hover:bg-brand-blue hover:text-white transition-all">
-                <Linkedin size={18} />
+              <a aria-label="LinkedIn" href="#" className="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-brand-blue transition-all shadow-sm">
+                <Linkedin size={20} />
               </a>
             </div>
           </div>
@@ -50,7 +51,7 @@ export const Footer = () => {
         
         <div className="border-t border-slate-900/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-700 text-xs font-bold">
-            © {new Date().getFullYear()} Insightful Hires. All rights reserved.
+            (c) {new Date().getFullYear()} Insightful Hires. All rights reserved.
           </p>
           <p className="text-slate-400 text-xs font-medium">
             Designed for the modern professional world.
@@ -60,3 +61,4 @@ export const Footer = () => {
     </footer>
   );
 };
+
