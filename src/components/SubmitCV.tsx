@@ -15,16 +15,15 @@ export const SubmitCV = () => {
     try {
       const response = await fetch('/api/submit-cv', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName: String(formData.get('firstName') || ''),
-          lastName: String(formData.get('lastName') || ''),
-          email: String(formData.get('email') || ''),
-          department: String(formData.get('department') || ''),
-        }),
+        body: formData,
       });
-      if (response.ok) setStatus('success');
-      else setStatus('error');
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+        setSelectedFileName('');
+      } else {
+        setStatus('error');
+      }
     } catch (error) {
       setStatus('error');
     }
@@ -168,6 +167,7 @@ export const SubmitCV = () => {
                       name="cv"
                       type="file"
                       accept=".pdf,.doc,.docx"
+                      required
                       className="sr-only"
                       onChange={(e) => setSelectedFileName(e.target.files?.[0]?.name ?? '')}
                     />

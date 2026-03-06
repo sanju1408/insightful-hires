@@ -57,7 +57,7 @@ export const Contact = () => {
               </div>
               <div>
                 <p className="text-xs text-slate-400 uppercase font-bold tracking-widest mb-1">Direct Email</p>
-                <p className="text-xl font-bold text-slate-900">hello@insightfulhires.com</p>
+                <p className="text-xl font-bold text-slate-900">insightfulhires@zohomail.in</p>
               </div>
             </div>
           </motion.div>

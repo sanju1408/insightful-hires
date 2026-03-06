@@ -14,10 +14,10 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend -- --host 0.0.0.0 --port 5173\"",
     "start": "NODE_ENV=production node dist/server.js",
-    "build": "vite build",
+    "build": "vite build --config vite.config.mjs --configLoader runner",
     "typecheck": "tsc --noEmit",
     "dev:backend": "node dev-server.js",
-    "dev:frontend": "vite"
+    "dev:frontend": "vite --config vite.config.mjs --configLoader runner"
   },
   "dependencies": {
     "@google/genai": "^1.43.0",
@@ -26,6 +26,7 @@
     "better-sqlite3": "^12.6.2",
     "express": "^5.2.1",
     "lucide-react": "^0.576.0",
+    "multer": "^2.0.2",
     "motion": "^12.34.4",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
